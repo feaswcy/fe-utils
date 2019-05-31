@@ -1,26 +1,18 @@
 
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
-
-const buble = require('rollup-plugin-buble');
-const typescript = require('rollup-plugin-typescript');
-
-function resolveDir(dir){
-  return path.join(__dirname, '../', dir)
-}
+import typescript from 'rollup-plugin-typescript';
 
 export default {
-  input: 'src/main.js',
+  input: 'src/main.ts',
   output:{
-    file: 'util.js',
+    file: 'dist/util.js',
     format: 'cjs'
   },
   plugins:[
     typescript(),
-    buble(),
-    nodeResolve({
-      jsnext: true,
-      main: true
+    nodeResolve({ // 如果不使用此插件，那么rollup只会转换import 语法，不会去外部查找模块（也就是指转换为require）
+      mainFields: ['module', 'main'], // Default: ['module', 'main']
     }),
     commonjs({
       include: 'node_modules/**',  // Default: undefined

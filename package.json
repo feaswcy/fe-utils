@@ -2,12 +2,15 @@
   "name": "fe-utils",
   "version": "1.0.0",
   "description": "javascript utils using rollup, zero config",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "",
-    "build": "rollup --config build/rollup.config.js",
+    "dev": "rollup --watch src/**",
+    "build": "rollup --config build/rollup.config.js -f es",
+    "build:es": "rollup --config build/rollup.config.js -f es",
+    "build:umd": "rollup --config build/rollup.config.js -f umd",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "module": "",
   "keywords": [
     "js-utils",
     "rollup"
@@ -16,9 +19,11 @@
   "license": "ISC",
   "devDependencies": {
     "rollup": "^1.12.4",
-    "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
-    "rollup-plugin-typescript": "^1.0.1"
-  }
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.9.3",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {}
 }

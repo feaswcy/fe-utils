@@ -5,11 +5,16 @@ import typescript from 'rollup-plugin-typescript';
 
 export default {
   input: 'src/main.ts',
-  output:{
-    file: 'dist/util.js',
+  output: {
+    file: 'dist/utils.js',
     format: 'cjs'
   },
-  plugins:[
+  watch: {
+    chokidar: true,
+    include: 'src/**',
+    exclude: 'node_modules/**'
+  },
+  plugins: [
     typescript(),
     nodeResolve({ // 如果不使用此插件，那么rollup只会转换import 语法，不会去外部查找模块（也就是指转换为require）
       mainFields: ['module', 'main'], // Default: ['module', 'main']

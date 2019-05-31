@@ -4,10 +4,10 @@
   "description": "javascript utils using rollup, zero config",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "rollup --watch src/**",
+    "dev": "rollup --config build/rollup.base.config.js",
     "build": "rollup --config build/rollup.config.js -f es",
-    "build:es": "rollup --config build/rollup.config.js -f es",
-    "build:umd": "rollup --config build/rollup.config.js -f umd",
+    "build:es": "rollup --config build/rollup.config.js -f es -o dist/utils.esm.js",
+    "build:umd": "rollup --config build/rollup.config.js -f umd -0 dist/utils.umd.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "module": "",
@@ -18,6 +18,7 @@
   "author": "wangchang3910@qq.com",
   "license": "ISC",
   "devDependencies": {
+    "chokidar": "^3.0.0",
     "rollup": "^1.12.4",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
